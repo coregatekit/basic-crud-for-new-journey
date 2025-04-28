@@ -1,4 +1,5 @@
-import { Column, Entity } from 'typeorm';
+import { Column, Entity, OneToMany } from 'typeorm';
+import { Employee } from './employee';
 
 @Entity({ name: 'positions' })
 export class Position {
@@ -10,6 +11,9 @@ export class Position {
 
   @Column({ name: 'active', type: 'boolean', default: true })
   active!: boolean;
+
+  @OneToMany(() => Employee, (employee) => employee.position)
+  employees!: Employee[];
 
   @Column({ name: 'created_at', type: 'timestamp', default: () => 'CURRENT_TIMESTAMP' })
   createdAt!: Date;

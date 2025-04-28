@@ -1,5 +1,6 @@
-import { Column, Entity, JoinColumn, OneToOne } from 'typeorm';
+import { Column, Entity, JoinColumn, ManyToOne, OneToOne } from 'typeorm';
 import { Person } from './person';
+import { Position } from './position';
 
 @Entity({ name: 'employees'})
 export class Employee {
@@ -22,8 +23,8 @@ export class Employee {
   @JoinColumn()
   person!: Person;
 
-  @Column({ name: 'position_id', type: 'int', nullable: false })
-  positionId!: number;
+  @ManyToOne(() => Position, (position) => position.employees)
+  position!: Position;
 
   @Column({ name: 'active', type: 'boolean', default: true })
   active!: boolean;
