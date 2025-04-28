@@ -1,10 +1,22 @@
-import expresss, { type Request, type Response } from 'express'
+import expresss, { type Request, type Response } from "express";
+import { AppDataSource } from "./data-source";
 
-const app = expresss()
-app.use(expresss.json())
+const PORT = 8000;
 
-app.get('/health', (req: Request, res: Response) => {
-  res.status(200).json({ status: 'The API is working perfectly!✅' })
-})
+const app = expresss();
+app.use(expresss.json());
 
-app.listen(4000, () => console.log('Application is starting on port: 4000 🚀'))
+app.get("/health", (req: Request, res: Response) => {
+  res.status(200).json({ status: "The API is working perfectly!✅" });
+});
+
+AppDataSource.initialize()
+  .then(async () => {
+    app.listen(PORT, () =>
+      console.log(`Application is starting on port: ${PORT} 🚀`)
+    );
+    console.log("Database connection has been established successfully! ✅");
+  })
+  .catch((error) => {
+    console.error("Error during Data Source initialization", error);
+  });
