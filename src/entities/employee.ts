@@ -20,10 +20,11 @@ export class Employee {
   startedAt!: Date;
 
   @OneToOne(() => Person)
-  @JoinColumn()
+  @JoinColumn({ name: 'person_id' })
   person!: Person;
 
   @ManyToOne(() => Position, (position) => position.employees)
+  @JoinColumn({ name: 'position_id' })
   position!: Position;
 
   @Column({ name: 'active', type: 'boolean', default: true })
