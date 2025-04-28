@@ -1,4 +1,5 @@
-import { Column, Entity } from 'typeorm';
+import { Column, Entity, JoinColumn, OneToOne } from 'typeorm';
+import { Person } from './person';
 
 @Entity({ name: 'employees'})
 export class Employee {
@@ -17,8 +18,9 @@ export class Employee {
   @Column({ name: 'started_at', type: 'timestamp', default: () => 'CURRENT_TIMESTAMP' })
   startedAt!: Date;
 
-  @Column({ name: 'person_id', type: 'uuid', nullable: false })
-  personId!: string;
+  @OneToOne(() => Person)
+  @JoinColumn()
+  person!: Person;
 
   @Column({ name: 'position_id', type: 'int', nullable: false })
   positionId!: number;
