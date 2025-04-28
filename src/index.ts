@@ -1,4 +1,4 @@
-import expresss, { Request, Response } from 'express'
+import expresss, { type Request, type Response } from 'express'
 
 const app = expresss()
 app.use(expresss.json())
