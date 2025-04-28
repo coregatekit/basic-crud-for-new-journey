@@ -5,5 +5,6 @@ export const AppDataSource = new DataSource({
   database: 'new-journey.db',
   entities: ['src/entities/*.ts'],
   migrations: ['src/migrations/*.ts'],
+  migrationsTableName: 'migration_table',
   synchronize: false,
 })
