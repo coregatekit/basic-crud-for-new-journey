@@ -11,7 +11,7 @@ export class Person {
   @Column({ name: 'last_name', type: 'varchar', length: 50, nullable: false })
   lastName!: string;
 
-  @Column({ name: 'gender', type: 'char', length: 1, nullable: false })
+  @Column({ name: 'gender', type: 'nchar', length: 1, nullable: false })
   gender!: string;
 
   @Column({ name: 'date_of_birth', type: 'date', nullable: false })
@@ -23,9 +23,9 @@ export class Person {
   @Column({ name: 'phone_number', type: 'varchar', length: 15, nullable: false })
   phoneNumber!: string;
 
-  @Column({ name: 'created_at', type: 'timestamp', default: () => 'CURRENT_TIMESTAMP' })
+  @Column({ name: 'created_at', type: 'time', default: () => 'CURRENT_TIMESTAMP' })
   createdAt!: Date;
 
-  @Column({ name: 'updated_at', type: 'timestamp', default: () => 'CURRENT_TIMESTAMP', onUpdate: 'CURRENT_TIMESTAMP' })
+  @Column({ name: 'updated_at', type: 'time', default: () => 'CURRENT_TIMESTAMP', onUpdate: 'CURRENT_TIMESTAMP' })
   updatedAt!: Date;
 }

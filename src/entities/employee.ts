@@ -16,7 +16,7 @@ export class Employee {
   @Column({ name: 'varchar', length: 100, nullable: false })
   email!: string;
 
-  @Column({ name: 'started_at', type: 'timestamp', default: () => 'CURRENT_TIMESTAMP' })
+  @Column({ name: 'started_at', type: 'time', default: () => 'CURRENT_TIMESTAMP' })
   startedAt!: Date;
 
   @OneToOne(() => Person)
@@ -29,9 +29,9 @@ export class Employee {
   @Column({ name: 'active', type: 'boolean', default: true })
   active!: boolean;
 
-  @Column({ name: 'created_at', type: 'timestamp', default: () => 'CURRENT_TIMESTAMP' })
+  @Column({ name: 'created_at', type: 'time', default: () => 'CURRENT_TIMESTAMP' })
   createdAt!: Date;
 
-  @Column({ name: 'updated_at', type: 'timestamp', default: () => 'CURRENT_TIMESTAMP', onUpdate: 'CURRENT_TIMESTAMP' })
+  @Column({ name: 'updated_at', type: 'time', default: () => 'CURRENT_TIMESTAMP', onUpdate: 'CURRENT_TIMESTAMP' })
   updatedAt!: Date;
 }
