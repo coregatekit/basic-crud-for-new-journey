@@ -1,3 +1,6 @@
+### Health
+GET http://localhost:8000/health HTTP/1.1
+
 ### Get all positions
 GET http://localhost:8000/positions HTTP/1.1
 Content-Type: application/json
