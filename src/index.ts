@@ -1,5 +1,6 @@
 import expresss, { type Request, type Response } from "express";
 import { AppDataSource } from "./data-source";
+import { positionRouter } from './routes/position.route';
 
 const PORT = 8000;
 
@@ -9,6 +10,7 @@ app.use(expresss.json());
 app.get("/health", (req: Request, res: Response) => {
   res.status(200).json({ status: "The API is working perfectly!✅" });
 });
+app.use("/positions", positionRouter);
 
 AppDataSource.initialize()
   .then(async () => {

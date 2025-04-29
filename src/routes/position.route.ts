@@ -1,63 +1,14 @@
-import { Router, type Request, type Response } from "express";
-import { PositionService } from "../services/positition.service";
-import positionRepository from "../repositories/position.repository";
+import { Router, type Request, type Response } from 'express';
+import positionRepository from '../repositories/position.repository';
 
-const router = Router();
+export const positionRouter = Router();
 
-router.get("/", (req: Request, res: Response) => {
-  const positionService = new PositionService(positionRepository);
-  const positions = positionService.getAllPositions();
+positionRouter.get('/', async (_req: Request, res: Response) => {
+  const positions = await positionRepository.find();
 
-  res.status(200).json({
-    code: 200,
-    data: positions,
-  });
+  if (positions.length === 0) {
+    res.status(404).json({ message: 'No positions found' });
+    return
+  }
+  res.status(200).json(positions);
 });
-
-router.get("/search", async (req: Request, res: Response) => {
-  const { text } = req.query;
-  const positionService = new PositionService(positionRepository);
-  const positions = await positionService.searchPositionByName(text as string);
-
-  res.status(200).json({
-    code: 200,
-    data: positions,
-  });
-});
-
-router.post("/", async (req: Request, res: Response) => {
-  const positionService = new PositionService(positionRepository);
-
-  const position = await positionService.createPosition(req.body);
-
-  res.status(201).json({
-    code: 201,
-    data: position,
-  });
-});
-
-router.patch("/:id", async (req: Request, res: Response) => {
-  const { id } = req.params;
-  const positionService = new PositionService(positionRepository);
-  const position = await positionService.updatePosition(
-    Number(id),
-    req.body
-  );
-  res.status(200).json({
-    code: 200,
-    data: position,
-  });
-})
-
-router.get("/:id", async (req: Request, res: Response) => {
-  const { id } = req.params;
-  const positionService = new PositionService(positionRepository);
-  const position = await positionService.getPositionById(Number(id));
-
-  res.status(200).json({
-    code: 200,
-    data: position,
-  });
-});
-
-export default router;
