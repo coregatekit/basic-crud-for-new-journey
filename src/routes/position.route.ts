@@ -23,3 +23,16 @@ positionRouter.get("/:id", async (req: Request, res: Response) => {
   }
   res.status(200).json(position);
 });
+
+positionRouter.post("/", async (req: Request, res: Response) => {
+  const { title } = req.body;
+
+  if (!title) {
+    res.status(400).json({ message: "Name and description are required" });
+    return;
+  }
+
+  const newPosition = positionRepository.create({ title });
+  await positionRepository.save(newPosition);
+  res.status(201).json(newPosition);
+});
