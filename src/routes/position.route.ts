@@ -36,3 +36,26 @@ positionRouter.post("/", async (req: Request, res: Response) => {
   await positionRepository.save(newPosition);
   res.status(201).json(newPosition);
 });
+
+positionRouter.patch("/:id", async (req: Request, res: Response) => {
+  const { id } = req.params;
+  const { title, active } = req.body;
+
+  const position = await positionRepository.findOneBy({ id: Number(id) });
+
+  if (!position) {
+    res.status(404).json({ message: "Position not found" });
+    return;
+  }
+
+  // Update only the fields that are provided
+  if (title !== undefined) {
+    position.title = title;
+  }
+  if (active !== undefined) {
+    position.active = active;
+  }
+
+  await positionRepository.save(position);
+  res.status(200).json(position);
+});
