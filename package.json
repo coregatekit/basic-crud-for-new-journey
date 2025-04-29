@@ -20,6 +20,7 @@
     "@eslint/json": "^0.12.0",
     "@types/body-parser": "^1.19.5",
     "@types/express": "^5.0.1",
+    "@types/morgan": "^1.9.9",
     "@types/node": "^22.15.3",
     "eslint": "^9.25.1",
     "globals": "^16.0.0",
@@ -32,6 +33,7 @@
   "dependencies": {
     "body-parser": "^2.2.0",
     "express": "^5.1.0",
+    "morgan": "^1.10.0",
     "reflect-metadata": "^0.2.2",
     "sqlite3": "^5.1.7",
     "typeorm": "^0.3.22"
