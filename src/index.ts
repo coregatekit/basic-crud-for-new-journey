@@ -1,11 +1,15 @@
 import expresss, { type Request, type Response } from "express";
 import { AppDataSource } from "./data-source";
 import { positionRouter } from "./routes/position.route";
+import bodyParser from "body-parser";
+import morgan from "morgan";
 
 const PORT = 8000;
 
 const app = expresss();
-app.use(expresss.json());
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(morgan("combined"));
 
 app.get("/health", (req: Request, res: Response) => {
   res.status(200).json({ status: "The API is working perfectly!✅" });
