@@ -3,6 +3,7 @@ import { AppDataSource } from "./data-source";
 import { positionRouter } from "./routes/position.route";
 import bodyParser from "body-parser";
 import morgan from "morgan";
+import { personRouter } from './routes/person.route';
 
 const PORT = 8000;
 
@@ -15,6 +16,7 @@ app.get("/health", (req: Request, res: Response) => {
   res.status(200).json({ status: "The API is working perfectly!✅" });
 });
 app.use("/positions", positionRouter);
+app.use("/persons", personRouter);
 
 AppDataSource.initialize()
   .then(async () => {
