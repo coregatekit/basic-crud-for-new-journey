@@ -12,3 +12,14 @@ positionRouter.get("/", async (_req: Request, res: Response) => {
   }
   res.status(200).json(positions);
 });
+
+positionRouter.get("/:id", async (req: Request, res: Response) => {
+  const { id } = req.params;
+  const position = await positionRepository.findOneBy({ id: Number(id) });
+
+  if (!position) {
+    res.status(404).json({ message: "Position not found" });
+    return;
+  }
+  res.status(200).json(position);
+});
