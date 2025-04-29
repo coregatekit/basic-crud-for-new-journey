@@ -1,0 +1,23 @@
+### Get all positions
+GET http://localhost:8000/positions HTTP/1.1
+Content-Type: application/json
+
+### Get position by ID
+GET http://localhost:8000/positions/1 HTTP/1.1
+Content-Type: application/json
+
+### Create position
+POST http://localhost:8000/positions HTTP/1.1
+Content-Type: : application/json
+
+{
+  "title": "Software Engineer"
+}
+
+### Update position
+PUT http://localhost:8000/positions/1 HTTP/1.1
+Content-Type: application/json
+
+{
+  "title": "Senior Software Engineer"
+}
