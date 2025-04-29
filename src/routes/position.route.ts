@@ -59,3 +59,16 @@ positionRouter.patch("/:id", async (req: Request, res: Response) => {
   await positionRepository.save(position);
   res.status(200).json(position);
 });
+
+positionRouter.delete("/:id", async (req: Request, res: Response) => {
+  const { id } = req.params;
+  const position = await positionRepository.findOneBy({ id: Number(id) });
+
+  if (!position) {
+    res.status(404).json({ message: "Position not found" });
+    return;
+  }
+
+  await positionRepository.remove(position);
+  res.status(204).send();
+});
