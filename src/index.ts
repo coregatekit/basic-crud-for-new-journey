@@ -1,6 +1,6 @@
 import expresss, { type Request, type Response } from "express";
 import { AppDataSource } from "./data-source";
-import { positionRouter } from './routes/position.route';
+import { positionRouter } from "./routes/position.route";
 
 const PORT = 8000;
 
