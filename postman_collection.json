@@ -176,7 +176,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"firstName\": \"Uginaga\",\n    \"lastName\": \"Aeri\",\n    \"gender\": \"F\",\n    \"dateOfBirth\": \"2020-10-30T07:00:00.000Z\",\n    \"email\": \"aerichandesu@example.com\"\n}",
+							"raw": "{\n    \"firstName\": \"Uginaga\",\n    \"lastName\": \"Aeri\",\n    \"gender\": \"F\",\n    \"dateOfBirth\": \"2020-10-30T07:00:00.000Z\",\n    \"email\": \"aerichandesu@example.com\"\n    \"phoneNumber\": \"0991111111\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -204,7 +204,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"id\": \"abcdccdsdcs\",\n    \"firstName\": \"Uginaga\",\n    \"lastName\": \"Aeri\",\n    \"gender\": \"F\",\n    \"dateOfBirth\": \"2020-10-30T07:00:00.000Z\",\n    \"email\": \"aerichandesu@example.com\"\n}",
+							"raw": "{\n    \"id\": \"abcdccdsdcs\",\n    \"firstName\": \"Uginaga\",\n    \"lastName\": \"Aeri\",\n    \"gender\": \"F\",\n    \"dateOfBirth\": \"2020-10-30T07:00:00.000Z\",\n    \"email\": \"aerichandesu@example.com\"\n    \"phoneNumber\": \"0991111111\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
