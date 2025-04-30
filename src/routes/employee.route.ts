@@ -128,3 +128,20 @@ employeeRouter.patch("/:id", async (req: Request, res: Response) => {
   await employeeRepository.save(employee);
   res.status(200).json(employee);
 });
+
+employeeRouter.delete("/:id", async (req: Request, res: Response) => {
+  const { id } = req.params;
+  if (!id) {
+    res.status(400).json({ message: "ID is required" });
+    return;
+  }
+
+  const employee = await employeeRepository.findOneBy({ id });
+  if (!employee) {
+    res.status(404).json({ message: "Employee not found" });
+    return;
+  }
+
+  await employeeRepository.remove(employee);
+  res.status(200).json({ message: "Employee deleted successfully" });
+});
