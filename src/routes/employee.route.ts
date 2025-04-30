@@ -12,3 +12,21 @@ employeeRouter.get("/" , async (_req: Request, res: Response) => {
 
   res.status(200).json(employees);
 });
+
+employeeRouter.get("/:id", async (req: Request, res: Response) => {
+  const { id } = req.params;
+
+  if (!id) {
+    res.status(400).json({ message: "ID is required" });
+    return;
+  }
+
+  const employee = await employeeRepository.findOneBy({ id });
+
+  if (!employee) {
+    res.status(404).json({ message: "Employee not found" });
+    return;
+  }
+
+  res.status(200).json(employee);
+});
