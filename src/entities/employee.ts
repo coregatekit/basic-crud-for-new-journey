@@ -19,7 +19,7 @@ export class Employee {
   })
   salary!: number;
 
-  @Column({ name: "email", length: 100, nullable: false })
+  @Column({ name: "email", type: 'varchar', length: 100, nullable: false })
   email!: string;
 
   @Column({
