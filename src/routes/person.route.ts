@@ -117,3 +117,20 @@ personRouter.patch("/:id", async (req: Request, res: Response) => {
   await personRepository.save(person);
   res.status(200).json(person);
 });
+
+personRouter.delete("/:id", async (req: Request, res: Response) => {
+  const { id } = req.params;
+  if (!id) {
+    res.status(400).json({ message: "Id is required" });
+    return;
+  }
+
+  const person = await personRepository.findOneBy({ id });
+  if (!person) {
+    res.status(404).json({ message: "Person not found" });
+    return;
+  }
+
+  await personRepository.remove(person);
+  res.status(200).json({ message: "Person deleted successfully" });
+});
