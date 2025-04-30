@@ -4,6 +4,7 @@ import { positionRouter } from "./routes/position.route";
 import bodyParser from "body-parser";
 import morgan from "morgan";
 import { personRouter } from './routes/person.route';
+import { employeeRouter } from './routes/employee.route';
 
 const PORT = 8000;
 
@@ -17,6 +18,7 @@ app.get("/health", (req: Request, res: Response) => {
 });
 app.use("/positions", positionRouter);
 app.use("/persons", personRouter);
+app.use("/employees", employeeRouter);
 
 AppDataSource.initialize()
   .then(async () => {
